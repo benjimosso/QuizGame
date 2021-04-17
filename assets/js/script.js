@@ -19,7 +19,7 @@ var questions = [{
         choice2: "9",
         choice3: "4",
         choice4: "7",
-        answer: "4",
+        answer: "3",
     },
 
     {
@@ -28,7 +28,7 @@ var questions = [{
         choice2: "La cancha",
         choice3: "La Hinchada",
         choice4: "El Futbol",
-        answer: "Grande",
+        answer: "1",
     },
 
     {
@@ -37,7 +37,7 @@ var questions = [{
         choice2: "Cagon",
         choice3: "algo",
         choice4: "El mejor",
-        answer: "Cagon",
+        answer: "2",
     },
     {
         question: "Quien Es el Tecnico de River",
@@ -45,7 +45,7 @@ var questions = [{
         choice2: "Coudet",
         choice3: "Becaccece",
         choice4: "Pizzi",
-        answer: "Gallardo",
+        answer: "1",
     },
     {
         question: "Quien tiene la 10 en river",
@@ -53,7 +53,7 @@ var questions = [{
         choice2: "Enzo Perez",
         choice3: "Borre",
         choice4: "Carrascal",
-        answer: "Carrascal",
+        answer: "5",
     },
 
 ]
@@ -66,7 +66,7 @@ AnswersBox.style.display = 'none'
 var LastquestionIndex = questions.length;
 //console.log(LastquestionIndex)
 var RunningQuestion = 0;
-console.log(RunningQuestion)
+//console.log(RunningQuestion)
 
 //console.log(q.answer)
 
@@ -79,87 +79,105 @@ console.log(RunningQuestion)
 //buttonQuestion.textContent = currentQuestion[1].question
 
 //Start Game Function
-function StartGame() {
+function StartQuiz() {
     StartContainer.style.display = 'none'
     AnswersBox.style.display = 'block'
     setTime()
+    test()
     RenderQuestion()
 
 }
 
-// Test de funcion. 
-Choice1.addEventListener('click', function Check() {
-    RenderQuestion()
-    if (q.answer === Choice1) {
-        score = score + 20
-    } else {
-        secondsLeft -= 5;
-    }
-    RunningQuestion++
-    console.log(Choice1)
-        //console.log(q.answer)
-});
-
-Choice2.addEventListener('click', function Check() {
-    RenderQuestion()
-    if (q.answer === Choice2) {
-        score = score + 20
-    } else {
-        secondsLeft -= 5;
-    }
-    RunningQuestion++
-    console.log(Choice2)
-});
-
-Choice3.addEventListener('click', function Check() {
-    RenderQuestion()
-    if (q.answer === Choice3) {
-        score = score + 20
-    } else {
-        secondsLeft -= 5;
-    }
-    RunningQuestion++
-    console.log(Choice3)
-        //console.log(q.answer)
-});
-
-Choice4.addEventListener('click', function Check() {
-    RenderQuestion()
-    if (q.answer === Choice4) {
-        score = score + 20
-    } else {
-        secondsLeft -= 5;
-    }
-    RunningQuestion++
-    console.log(Choice4)
-});
 
 
 
-q = questions[RunningQuestion]
-Choice1.textContent = q.choice1;
-Choice2.textContent = q.choice2;
-Choice3.textContent = q.choice3;
-Choice4.textContent = q.choice4;
+
 
 function RenderQuestion() {
     q = questions[RunningQuestion]
+        //RunningQuestion++
     console.log(RunningQuestion)
     QuestionText.textContent = q.question
-
-    Choice1 = q.choice1
     Choice1.textContent = q.choice1;
-
-    Choice2 = q.choice2
     Choice2.textContent = q.choice2;
-
-    Choice3 = q.choice3
     Choice3.textContent = q.choice3;
+    Choice4.textContent = q.choice4;
+    //Choice1.textContent = q.choice1;
+    // Choice1 = q.choice1
 
-    Choice4 = q.choice4
-    Choice4.textContent = q.choice4
+
+    // Choice2 = q.choice2
+    //     //Choice2.textContent = q.choice2;
+
+    // Choice3 = q.choice3
+    //     //Choice3.textContent = q.choice3;
+
+    // Choice4 = q.choice4
+    //     //Choice4.textContent = q.choice4
 
 }
+
+function test() {
+    // Test de funcion. 
+    Choice1.addEventListener('click', function Check() {
+        RunningQuestion++
+        RenderQuestion(RunningQuestion)
+
+        if (q.answer === Choice1.dataset.number) {
+            score = score + 20
+        } else {
+            secondsLeft -= 5;
+        }
+
+        console.log(Choice1)
+        console.log(score)
+    });
+
+    Choice2.addEventListener('click', function Check() {
+        RunningQuestion++
+        RenderQuestion(RunningQuestion[0])
+
+        if (q.answer === Choice2.dataset.number) {
+            score = score + 20
+        } else {
+            secondsLeft -= 5;
+        }
+
+        console.log(Choice2)
+        console.log(score)
+    });
+
+    Choice3.addEventListener('click', function Check() {
+        RunningQuestion++
+        RenderQuestion(RunningQuestion[0])
+
+
+        if (q.answer === Choice3.dataset.number) {
+            score = score + 20
+        } else {
+            secondsLeft -= 5;
+        }
+
+        console.log(Choice3)
+        console.log(score)
+            //console.log(q.answer)
+    });
+
+    Choice4.addEventListener('click', function Check() {
+        RunningQuestion++
+        RenderQuestion(RunningQuestion[0])
+
+        if (q.answer === Choice4.dataset.number) {
+            score = score + 20
+        } else {
+            secondsLeft -= 5;
+        }
+        console.log(Choice4)
+        console.log(score)
+    });
+
+};
+
 
 // function RenderQuestion() {
 //     q = questions[RunningQuestion]
@@ -174,7 +192,7 @@ function RenderQuestion() {
 // }
 
 
-console.log(RunningQuestion)
+//console.log(RunningQuestion)
 
 
 // Time function
@@ -191,7 +209,7 @@ function setTime() {
 }
 
 // attach element to start te start game function
-StartButton.addEventListener("click", StartGame)
+StartButton.addEventListener("click", StartQuiz)
 
 
 //console.log(buttonQuestion)
