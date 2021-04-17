@@ -1,4 +1,6 @@
 .button {
+    height: 100px;
+    width: 200px;
     border: none;
     background-color: #008CBA;
     color: white;
@@ -6,10 +8,27 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 25px;
     margin: 4px 2px;
     cursor: pointer;
 }
 
+.box-container {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    height: 400px;
+    width: 600px;
+    text-align: center;
+}
 
+.time {
+    height: 50px;
+    width: 50px;
+    padding-top: 25px;
+    font-size: 30px;
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+    margin-top: 100px;
 }

@@ -10,29 +10,25 @@
 </head>
 
 <body>
-    <h1 class="Welcome">Welcome to this Quiz about JavaScript. Please press the button to start the game.
-    </h1>
-    <button class="start-button">Start</button>
     <section class="box-container" data-state="hidden">
-        <h1 id="question" data-state="hidden">Answer to this Question</h1>
-        <div class="choice-container" data-state="hidden">
-            <p id="choice-prefix">A</p>
-            <p id="choice-text" data-number="1">Choice 1</p>
+        <div start class="start-container">
+            <h1 class="Welcome">Welcome to this Quiz about JavaScript. Please press the button to start the game.
+            </h1>
+            <button class="button start-button">Start</button>
         </div>
         <div class="choice-container" data-state="hidden">
-            <p id="choice-prefix">B</p>
-            <p id="choice-text" data-number="2">Choice 2</p>
+            <h1 id="question" data-state="hidden"></h1>
+
+            <button class="button" id="Choice1" data-number="1"></button>
+
+            <button class="button" id="Choice2" data-number="2"></button>
+
+            <button class="button" id="Choice3" data-number="3"></button>
+
+            <button class="button" id="Choice4" data-number="4"></button>
         </div>
-        <div class="choice-container" data-state="hidden">
-            <p id="choice-prefix">C</p>
-            <p id="choice-text" data-number="3">Choice 3</p>
-        </div>
-        <div class="choice-container" data-state="hidden">
-            <!-- <p id="choice-prefix" data-number="4">D</p> -->
-            <button class="button">Test</button>
-        </div>
+        <h3 class="time"></h3>
     </section>
-    <h3 class="time"></h3>
     <script src="./assets/js/script.js"></script>
 </body>
 
