@@ -108,7 +108,6 @@ function GameOver() {
         submmitSection()
     }
     if (secondsLeft <= 0) {
-        clearInterval(Timerinterval);
         TimeE1.style.display = 'none'
         AnswersBox.style.display = 'none'
         submmitSection()
@@ -144,9 +143,12 @@ function setTime() {
         secondsLeft--;
         TimeE1.textContent = secondsLeft;
         // if time ran out
-
+        if (secondsLeft <= 0) {
+            clearInterval(Timerinterval);
+            GameOver()
+            return;
+        }
     }, 1000);
-    return;
 }
 
 // Function for submmit. 
@@ -161,9 +163,22 @@ function submmitSection() {
     submitButton.classList.add('submitbutton')
     submitButton.innerHTML = "Submmit"
     ScoreContainer.appendChild(submitButton)
+        // var PlayButton = document.createElement('button')
+        // PlayButton.classList.add('playbutton')
+        // PlayButton.innerHTML = "Play Again"
+        // ScoreContainer.appendChild(PlayButton)
+
+    // PlayButton.onclick('click', StartQuiz())
 
 }
 
 
 // attach element to start te start game function
 StartButton.addEventListener("click", StartQuiz)
+
+var PlayButton = document.createElement('button')
+PlayButton.classList.add('playbutton')
+PlayButton.innerHTML = "Play Again"
+ScoreContainer.appendChild(PlayButton)
+
+// PlayButton.onclick('click', StartQuiz())
