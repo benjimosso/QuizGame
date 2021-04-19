@@ -1,11 +1,12 @@
 .button {
-    height: 100px;
-    width: 200px;
+    height: 150px;
+    width: 300px;
     border: none;
     background-color: #008CBA;
     color: white;
     padding: 15px 32px;
     text-align: center;
+    text-justify: auto;
     text-decoration: none;
     display: inline-block;
     font-size: 25px;
@@ -20,9 +21,14 @@
     height: 400px;
     width: 600px;
     text-align: center;
+    padding-left: 25%;
+    
+
 }
 
 .time {
+    display: flex;
+    justify-content: first baseline;
     height: 50px;
     width: 50px;
     padding-top: 25px;
