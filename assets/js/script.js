@@ -6,11 +6,11 @@ var AnswersBox = document.querySelector(".choice-container");
 var boxContainer = document.querySelector(".box-container");
 var StartContainer = document.querySelector(".start-container")
 var QuestionText = document.querySelector("#question");
-var buttonQuestion = document.querySelector(".button");
 var Choice1 = document.getElementById('Choice1')
 var Choice2 = document.getElementById('Choice2')
 var Choice3 = document.getElementById('Choice3')
 var Choice4 = document.getElementById('Choice4')
+var ScoreContainer = document.getElementById('Score-container')
     //var buttonQuestion = document.querySelector(".button")
     //console.log(buttonQuestion)
 var questions = [{
@@ -70,6 +70,7 @@ var score = 0;
 
 AnswersBox.style.display = 'none'
 TimeE1.style.display = 'none'
+ScoreContainer.style.display = 'none'
 var LastquestionIndex = questions.length;
 let RunningQuestion = 0
 
@@ -104,6 +105,14 @@ function GameOver() {
         AnswersBox.style.display = 'none'
         clearInterval(setTime)
         TimeE1.style.display = 'none'
+        submmitSection()
+    }
+    if (secondsLeft <= 0) {
+        clearInterval(Timerinterval);
+        TimeE1.style.display = 'none'
+        AnswersBox.style.display = 'none'
+        submmitSection()
+
     }
 }
 
@@ -135,16 +144,26 @@ function setTime() {
         secondsLeft--;
         TimeE1.textContent = secondsLeft;
         // if time ran out
-        if (secondsLeft <= 0) {
-            clearInterval(Timerinterval);
-            GameOver()
-            TimeE1.style.display = 'none'
-            AnswersBox.style.display = 'none'
 
-        }
     }, 1000);
     return;
 }
+
+// Function for submmit. 
+function submmitSection() {
+    ScoreContainer.style.display = 'block'
+        // var ScoreText = document.createElement('h3')
+        // ScoreText.classList.add('ScoreText')
+    var ScoreText = document.getElementById('ScoreText')
+    ScoreText.innerText = "Your Score is " + score;
+    // ScoreContainer.appendChild(ScoreText)
+    var submitButton = document.createElement('button')
+    submitButton.classList.add('submitbutton')
+    submitButton.innerHTML = "Submmit"
+    ScoreContainer.appendChild(submitButton)
+
+}
+
 
 // attach element to start te start game function
 StartButton.addEventListener("click", StartQuiz)

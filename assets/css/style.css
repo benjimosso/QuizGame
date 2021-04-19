@@ -32,3 +32,8 @@
     color: aliceblue;
     margin-top: 100px;
 }
+
+.inputbox {
+    height: auto;
+    width: auto;
+}
