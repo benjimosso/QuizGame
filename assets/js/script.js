@@ -21,7 +21,6 @@ var questions = [{
         choice4: "7",
         answer: "3",
     },
-
     {
         question: "Cual es la difrencia entre el millo y los demas.",
         choice1: "Grande",
@@ -62,11 +61,11 @@ var secondsLeft = 60;
 var score = 0;
 
 AnswersBox.style.display = 'none'
-
-var LastquestionIndex = questions.length;
-//console.log(LastquestionIndex)
-var RunningQuestion = 0;
-//console.log(RunningQuestion)
+TimeE1.style.display = 'none'
+    //var LastquestionIndex = questions.length - 1;
+    //console.log(LastquestionIndex)
+let RunningQuestion = 0
+    //console.log(RunningQuestion)
 
 //console.log(q.answer)
 
@@ -82,101 +81,214 @@ var RunningQuestion = 0;
 function StartQuiz() {
     StartContainer.style.display = 'none'
     AnswersBox.style.display = 'block'
+    TimeE1.style.display = 'block'
     setTime()
-    test()
     RenderQuestion()
-
 }
 
-
-
-
+Choice1.addEventListener("click", () => {
+    RunningQuestion++
+    RenderQuestion()
+    RightWrong()
+    console.log(Choice1)
+    console.log(score)
+})
 
 
 function RenderQuestion() {
-    q = questions[RunningQuestion]
-        //RunningQuestion++
-    console.log(RunningQuestion)
-    QuestionText.textContent = q.question
+    console.log("RenderQuestion", RunningQuestion)
+    console.log(Choice1)
+    q = questions[RunningQuestion];
+    QuestionText.innerText = q.question;
     Choice1.textContent = q.choice1;
     Choice2.textContent = q.choice2;
     Choice3.textContent = q.choice3;
     Choice4.textContent = q.choice4;
-    //Choice1.textContent = q.choice1;
-    // Choice1 = q.choice1
+    GameOver()
+}
+// Choice1.addEventListener("click", () => {
+//     RunningQuestion++
+//     RenderQuestion()
+//     console.log(Choice1)
+//     console.log(score)
+// })
+
+// Choice1.addEventListener('click', RightWrong())
+// Choice2.addEventListener('click', RightWrong())
+// Choice3.addEventListener('click', RightWrong())
+// Choice4.addEventListener('click', RightWrong())
+
+// function test() {
+
+//     // Test de funcion. 
+//     // Choice1.addEventListener('click', function(event) {
+
+//     //     if (event.target.tagName === 'BUTTON') {
+//     //         RenderQuestion()
+//     //         RightWrong()
+//     //         RunningQuestion++
+//     //         RenderQuestion
+//     //         console.log(Choice1)
+//     //         console.log(RunningQuestion)
+//     //         console.log(score)
+//     //     };
+//     //     // if (q.answer === Choice1.dataset.number) {
+//     //     //     score = score + 20
+//     //     // } else {
+//     //     //     secondsLeft -= 5;
+//     //     // }
+//     //     // RunningQuestion++
+//     //     // RenderQuestion()
+//     //     // console.log(Choice1)
+//     //     // console.log(score)
+//     // });
+
+//     Choice1.addEventListener('click', function Check() {
 
 
-    // Choice2 = q.choice2
-    //     //Choice2.textContent = q.choice2;
+//         if (q.answer === Choice1.dataset.number) {
+//             score = score + 20
 
-    // Choice3 = q.choice3
-    //     //Choice3.textContent = q.choice3;
+//         } else {
+//             secondsLeft -= 5;
 
-    // Choice4 = q.choice4
-    //     //Choice4.textContent = q.choice4
+//         }
+
+
+//         RunningQuestion++
+//         RenderQuestion()
+
+//         console.log(Choice2)
+//         console.log(score)
+//     });
+
+//     Choice2.addEventListener('click', function Check() {
+
+
+//         if (q.answer === Choice2.dataset.number) {
+//             score = score + 20
+
+//         } else {
+//             secondsLeft -= 5;
+
+//         }
+
+
+//         RunningQuestion++
+//         RenderQuestion()
+
+//         console.log(Choice2)
+//         console.log(score)
+//     });
+
+
+//     Choice3.addEventListener('click', function Check() {
+
+//         if (q.answer === Choice3.dataset.number) {
+//             score = score + 20
+
+//         } else {
+//             secondsLeft -= 5;
+//         }
+
+
+
+//         console.log(Choice3)
+//         console.log(score)
+//         console.log("Running question", RunningQuestion)
+
+//         RunningQuestion++
+//         RenderQuestion()
+
+//         // IndexQuestion()
+//         // RenderQuestion()
+
+//         console.log("Running question", RunningQuestion)
+
+//     });
+
+
+//     Choice4.addEventListener('click', function Check() {
+//         if (q.answer === Choice4.dataset.number) {
+//             score = score + 20
+
+//         } else {
+//             secondsLeft -= 5;
+
+//         }
+//         RunningQuestion++
+//         RenderQuestion()
+//         console.log(Choice4)
+//         console.log(score)
+//         console.log(RunningQuestion)
+//     });
+
+// }
+// // RenderQuestion()
+// // RunningQuestion++
+
+
+// // function IndexQuestion() {
+// //     if (RunningQuestion < LastquestionIndex) {
+// //         RunningQuestion++
+// //     }
+// // }
+
+
+
+
+
+function GameOver() {
+    if (RunningQuestion === 5) {
+        AnswersBox.style.display = 'none'
+        clearInterval(setTime)
+        TimeE1.style.display = 'none'
+    }
+}
+
+
+//console.log(RunningQuestion)
+
+
+function RightWrong() {
+    // Chice 1
+    if (q.answer === Choice1.dataset.number) {
+        score = score + 20
+
+    } else {
+        secondsLeft -= 5;
+
+    }
+    // Choice 2
+    if (q.answer === Choice2.dataset.number) {
+        score = score + 20
+
+    } else {
+        secondsLeft -= 5;
+
+    }
+
+    // Choice 3
+    if (q.answer === Choice3.dataset.number) {
+        score = score + 20
+
+    } else {
+        secondsLeft -= 5;
+
+    }
+
+    //Choice 4
+
+    if (q.answer === Choice4.dataset.number) {
+        score = score + 20
+
+    } else {
+        secondsLeft -= 5;
+
+    }
 
 }
 
-function test() {
-    // Test de funcion. 
-    Choice1.addEventListener('click', function Check() {
-        RunningQuestion++
-        RenderQuestion(RunningQuestion)
-
-        if (q.answer === Choice1.dataset.number) {
-            score = score + 20
-        } else {
-            secondsLeft -= 5;
-        }
-
-        console.log(Choice1)
-        console.log(score)
-    });
-
-    Choice2.addEventListener('click', function Check() {
-        RunningQuestion++
-        RenderQuestion(RunningQuestion[0])
-
-        if (q.answer === Choice2.dataset.number) {
-            score = score + 20
-        } else {
-            secondsLeft -= 5;
-        }
-
-        console.log(Choice2)
-        console.log(score)
-    });
-
-    Choice3.addEventListener('click', function Check() {
-        RunningQuestion++
-        RenderQuestion(RunningQuestion[0])
-
-
-        if (q.answer === Choice3.dataset.number) {
-            score = score + 20
-        } else {
-            secondsLeft -= 5;
-        }
-
-        console.log(Choice3)
-        console.log(score)
-            //console.log(q.answer)
-    });
-
-    Choice4.addEventListener('click', function Check() {
-        RunningQuestion++
-        RenderQuestion(RunningQuestion[0])
-
-        if (q.answer === Choice4.dataset.number) {
-            score = score + 20
-        } else {
-            secondsLeft -= 5;
-        }
-        console.log(Choice4)
-        console.log(score)
-    });
-
-};
 
 
 // function RenderQuestion() {
@@ -201,8 +313,10 @@ function setTime() {
         secondsLeft--;
         TimeE1.textContent = secondsLeft;
         // if time ran out
-        if (secondsLeft === 0) {
+        if (secondsLeft <= 0) {
             clearInterval(Timerinterval);
+            GameOver()
+
         }
     }, 1000);
     return;
