@@ -43,3 +43,10 @@
     height: auto;
     width: auto;
 }
+
+.HighScoreTable {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    text-justify: auto;
+    text-align: center;
+}
