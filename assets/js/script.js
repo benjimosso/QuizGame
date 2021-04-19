@@ -11,6 +11,8 @@ var Choice2 = document.getElementById('Choice2')
 var Choice3 = document.getElementById('Choice3')
 var Choice4 = document.getElementById('Choice4')
 var ScoreContainer = document.getElementById('Score-container')
+var SubmmitButton = document.getElementById('submmitbutton')
+var PlayButton = document.getElementById('playbutton')
     //var buttonQuestion = document.querySelector(".button")
     //console.log(buttonQuestion)
 var questions = [{
@@ -73,7 +75,7 @@ TimeE1.style.display = 'none'
 ScoreContainer.style.display = 'none'
 var LastquestionIndex = questions.length;
 let RunningQuestion = 0
-
+Timerinterval = null
 
 // Render Questions
 function RenderQuestion() {
@@ -93,8 +95,12 @@ function StartQuiz() {
     StartContainer.style.display = 'none'
     AnswersBox.style.display = 'block'
     TimeE1.style.display = 'block'
-    setTime()
+    ScoreContainer.style.display = 'none'
+    RunningQuestion = 0;
     RenderQuestion()
+    clearInterval(Timerinterval);
+
+
 }
 
 
@@ -154,31 +160,24 @@ function setTime() {
 // Function for submmit. 
 function submmitSection() {
     ScoreContainer.style.display = 'block'
-        // var ScoreText = document.createElement('h3')
-        // ScoreText.classList.add('ScoreText')
     var ScoreText = document.getElementById('ScoreText')
     ScoreText.innerText = "Your Score is " + score;
-    // ScoreContainer.appendChild(ScoreText)
-    var submitButton = document.createElement('button')
-    submitButton.classList.add('submitbutton')
-    submitButton.innerHTML = "Submmit"
-    ScoreContainer.appendChild(submitButton)
-        // var PlayButton = document.createElement('button')
-        // PlayButton.classList.add('playbutton')
-        // PlayButton.innerHTML = "Play Again"
-        // ScoreContainer.appendChild(PlayButton)
-
-    // PlayButton.onclick('click', StartQuiz())
-
 }
 
 
+function RestartGame() {
+    ScoreContainer.style.display = 'none'
+    StartContainer.style.display = 'block'
+    clearInterval(Timerinterval);
+    secondsLeft = 60
+    score = 0
+}
+
 // attach element to start te start game function
 StartButton.addEventListener("click", StartQuiz)
+StartButton.addEventListener("click", setTime)
 
-var PlayButton = document.createElement('button')
-PlayButton.classList.add('playbutton')
-PlayButton.innerHTML = "Play Again"
-ScoreContainer.appendChild(PlayButton)
+// reset game button (play again)
 
-// PlayButton.onclick('click', StartQuiz())
+PlayButton.addEventListener('click', RestartGame)
+PlayButton.addEventListener('click', setTime)
