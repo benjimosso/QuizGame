@@ -162,12 +162,32 @@ function submmitSection() {
 
 
 function RestartGame() {
-    clearInterval(Timerinterval);
+    //clearInterval(Timerinterval);
     ScoreContainer.style.display = 'none'
     StartContainer.style.display = 'block'
     secondsLeft = 60
     score = 0
-    }
+}
+
+// local storage function 
+// var username = localStorage.getItem("NameBox")
+
+
+// function HighScores() {
+
+//     var username = localStorage.getItem("NameBox")
+
+
+//     // console.log(Username)
+//     //     // usernaameValue = Username.value()
+//     // list = document.createElement('li')
+//     // list.innerText = Username + ' ' + score
+//     // HighScoreTable = document.getElementById('HighScoreTable')
+//     // console.log(HighScoreTable)
+//     // HighScoreTable.appendChild(list)
+//     //     // HighScoreTable.document.createTextNode(Username + ' ' + score)
+
+// }
 
 // attach element to start te start game function
 StartButton.addEventListener("click", StartQuiz)
@@ -176,3 +196,11 @@ StartButton.addEventListener("click", setTime)
 // reset game button (play again)
 PlayButton.addEventListener('click', RestartGame)
 PlayButton.addEventListener('click', setTime)
+
+//submmit button
+SubmmitButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    var username = document.getElementById('NameBox').value
+    localStorage.setItem('username', username + " " + score)
+    window.location.href = "./HighScore.html";
+});
